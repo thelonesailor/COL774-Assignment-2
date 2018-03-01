@@ -19,13 +19,15 @@ def getStemmedDocument(inputFileName, outputFileName):
 		tokens = tokenizer.tokenize(raw)
 		stopped_tokens = [token for token in tokens if token not in en_stop]
 		stemmed_tokens = [p_stemmer.stem(token) for token in stopped_tokens]
+		# print(stemmed_tokens)
 		documentWords = ' '.join(stemmed_tokens)
 		print(documentWords, file=out)
 	out.close()
 
-# creates the new stemmed documents with the suffix 'new' for both train and test files
-old_file=sys.argv[1]
-#with open(old_file, encoding='utf-8', errors='ignore') as f:
-#	x = f.readlines()
-new_file=sys.argv[2]
+old_file="./imdb/imdb_train_text.txt"
+new_file="./imdb/imdb_train_text_st.txt"
+getStemmedDocument(old_file, new_file)
+
+old_file = "./imdb/imdb_test_text.txt"
+new_file = "./imdb/imdb_test_text_st.txt"
 getStemmedDocument(old_file, new_file)

@@ -51,3 +51,11 @@ clean(inputfile,outputfile)
 inputfile = "./imdb/imdb_test_text.txt"
 outputfile = "./imdb/imdb_test_text_p.txt"
 clean(inputfile, outputfile)
+
+inputfile = "./imdb/imdb_train_text_st.txt"
+outputfile = "./imdb/imdb_train_text_st_p.txt"
+clean(inputfile, outputfile)
+
+inputfile = "./imdb/imdb_test_text_st.txt"
+outputfile = "./imdb/imdb_test_text_st_p.txt"
+clean(inputfile, outputfile)
