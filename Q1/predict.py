@@ -95,7 +95,7 @@ def predict(textfile, labelfile):
 					try:
 						temp += math.log(theta[word][j])*dtest[t][word]
 					except KeyError:
-						donothing = 0
+						pass
 
 				if(j == 0):
 					bestj = 0
