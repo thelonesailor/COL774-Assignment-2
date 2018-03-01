@@ -3,15 +3,22 @@ import math
 from random import randint
 import sys
 
-# 1 for stemmed
-# 0 for unstemmed
-inputfile=""
-if(sys.argv[1]=='1'):
-	inputfile="learned_st.txt"
-else:
-	inputfile = "learned.txt"
+# 0 for unstemmed, single word features
+# 1 for stemmed, single word features
+# 2 for unstemmed, single word features
+# 3 for stemmed, single word features
 
-csvfile = open(inputfile, 'r')
+learnedfile = ""
+if(sys.argv[1] == '0'):
+	learnedfile = "learned_p.txt"
+elif(sys.argv[1] == '1'):
+	learnedfile = "learned_st_p.txt"
+elif(sys.argv[1] == '2'):
+	learnedfile = "learned_p1.txt"
+elif(sys.argv[1] == '3'):
+	learnedfile = "learned_st_p1.txt"
+
+csvfile = open(learnedfile, 'r')
 data = list(csv.reader(csvfile, delimiter=' '))
 
 classes=len(data[0])
@@ -114,24 +121,13 @@ def predict(textfile, labelfile):
 			dtest[t][a[0]] = int(a[1])
 
 	assert (t==mtest)		
-	print("Using Naive Bayes        :\t{} correct".format(correct_nb))
-	print("Using Random class       :\t{} correct".format(correct_ran))
-	print("Using Most Occuring class:\t{} correct".format(correct_mo))
+	print("Using Naive Bayes        :\t{} correct  {}%".format(correct_nb, (correct_nb/mtest)*100))
+	print("Using Random class       :\t{} correct  {}%".format(correct_ran, (correct_ran/mtest)*100))
+	print("Using Most Occuring class:\t{} correct  {}%".format(correct_mo, (correct_mo/mtest)*100))
 
 	print_conf(confusion)
 
-if(sys.argv[1]=='1'):
-	# testing on training set
-	print("testing on stemmed training set")
-	predict("./imdb/imdb_train_text_st_p.txt", "./imdb/imdb_train_labels.txt")
-	print("")
-
-	# testing on testing set
-	print("testing on stemmed testing set")
-	predict("./imdb/imdb_test_text_st_p.txt", "./imdb/imdb_test_labels.txt")
-	print("")
-
-else:
+if(sys.argv[1] == '0'):
 	# testing on training set
 	print("testing on training set")
 	predict("./imdb/imdb_train_text_p.txt", "./imdb/imdb_train_labels.txt")
@@ -142,3 +138,23 @@ else:
 	predict("./imdb/imdb_test_text_p.txt", "./imdb/imdb_test_labels.txt")
 	print("")
 
+elif(sys.argv[1]=='1'):
+
+	# testing on testing set
+	print("testing on stemmed testing set")
+	predict("./imdb/imdb_test_text_st_p.txt", "./imdb/imdb_test_labels.txt")
+	print("")
+
+elif(sys.argv[1] == '2'):
+
+	# testing on testing set
+	print("testing on testing set")
+	predict("./imdb/imdb_test_text_p1.txt", "./imdb/imdb_test_labels.txt")
+	print("")
+
+elif(sys.argv[1] == '3'):
+
+	# testing on testing set
+	print("testing on testing set")
+	predict("./imdb/imdb_test_text_st_p1.txt", "./imdb/imdb_test_labels.txt")
+	print("")

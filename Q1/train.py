@@ -3,13 +3,21 @@ import math
 from random import randint 
 import sys
 
-# 1 for stemmed
 # 0 for unstemmed
+# 1 for stemmed
+# 2 for unstemmed
+# 3 for stemmed
+
 inputfile=""
-if(sys.argv[1] == '1'):
-	inputfile = "./imdb/imdb_train_text_st_p.txt"
-else:
+if(sys.argv[1] == '0'):
 	inputfile = "./imdb/imdb_train_text_p.txt"
+elif(sys.argv[1] == '1'):
+	inputfile = "./imdb/imdb_train_text_st_p.txt"
+elif(sys.argv[1] == '2'):
+	inputfile = "./imdb/imdb_train_text_p1.txt"
+elif(sys.argv[1] == '3'):
+	inputfile = "./imdb/imdb_train_text_st_p1.txt"
+
 
 
 csvfile = open(inputfile, 'r')
@@ -34,22 +42,23 @@ m1=t-1
 
 csvfile = open("./imdb/imdb_train_labels.txt", 'r')
 labels = list(csv.reader(csvfile))
-m2=len(labels)
+m2 = len(labels)
 
 assert m1==m2
 m=m1
 
+
 # 8 classes
-lbl=[]
+lbl = []
 
 for i in range(m):
 	labels[i] = int(labels[i][0])
 	if(labels[i] not in lbl):
 		lbl.append(labels[i])
 # print(labels)
-lbl=sorted(lbl)
+lbl = sorted(lbl)
 print(lbl)
-classes=len(lbl) 
+classes = len(lbl)
 
 invert = [-1 for i in range(max(lbl)+2)]
 for j in range(classes):
@@ -57,6 +66,14 @@ for j in range(classes):
 
 # constant for laplace smoothing
 c=1
+num = {}
+for word in vocabulary:
+	num[word] = [c for j in range(classes)]
+
+for i in range(1,m+1):
+	for word in d[i]:
+		num[word][invert[labels[i-1]]]+=d[i][word]
+
 V=len(vocabulary)
 print("{} words in training data\n".format(V))
 
@@ -76,40 +93,36 @@ for j in range(classes):
 		if(labels[i] == lbl[j]):
 			ex[j].append(i)
 
+denom = [V*c for j in range(classes)]
+for i in range(1,m+1):
+	clas = invert[labels[i-1]]
+	denom[clas] += count[i]
+
+
+
 t=1
 theta={}
 for word in vocabulary:
 	theta[word]=[0 for j in range(classes)]
-	num = [0 for j in range(classes)]
-	denom = [0 for j in range(classes)]
+	for j in range(classes):
+		theta[word][j]=num[word][j]/denom[j]
+	# print(t)
+	t+=1
 
-	
-	for j in range(classes):	
-		# fill theta[word][j]
-		num=c
-		denom=V*c
-		for i in ex[j]:
-			try:
-				num+=d[i][word]
-			except KeyError:
-				donothing = 0
-
-			denom+=count[i]
-
-		theta[word][j]=num/denom
-	# break
-
-	print(t)
-	t+=1	
 
 print("training done")
 # training done
 
 learnedfile=""
-if(sys.argv[1]=='1'):
-	learnedfile="learned_st1.txt"
-else:
-	learnedfile = "learned1.txt"
+if(sys.argv[1] == '0'):
+	learnedfile = "learned_p.txt"
+elif(sys.argv[1] == '1'):
+	learnedfile="learned_st_p.txt"
+elif(sys.argv[1] == '2'):
+	learnedfile = "learned_p1.txt"
+elif(sys.argv[1] == '3'):
+	learnedfile = "learned_st_p1.txt"
+
 
 f=open(learnedfile,'w')
 
