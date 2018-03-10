@@ -14,6 +14,7 @@ def clean(inputfile, outputfile):
 	
 	t=1
 	for line in docs:
+		raw=line
 		raw = line.lower()
 		raw = raw.replace(",", " ")
 		raw = raw.replace(".", " ")
@@ -44,18 +45,6 @@ def clean(inputfile, outputfile):
 	sys.stdout.close()	
 
 
-inputfile="./imdb/imdb_train_text.txt"
-outputfile = "./imdb/imdb_train_text_p.txt"
+inputfile = sys.argv[1]
+outputfile = sys.argv[2]
 clean(inputfile,outputfile)
-
-inputfile = "./imdb/imdb_test_text.txt"
-outputfile = "./imdb/imdb_test_text_p.txt"
-clean(inputfile, outputfile)
-
-inputfile = "./imdb/imdb_train_text_st.txt"
-outputfile = "./imdb/imdb_train_text_st_p.txt"
-clean(inputfile, outputfile)
-
-inputfile = "./imdb/imdb_test_text_st.txt"
-outputfile = "./imdb/imdb_test_text_st_p.txt"
-clean(inputfile, outputfile)

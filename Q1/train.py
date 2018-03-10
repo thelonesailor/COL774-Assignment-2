@@ -14,9 +14,13 @@ if(sys.argv[1] == '0'):
 elif(sys.argv[1] == '1'):
 	inputfile = "./imdb/imdb_train_text_st_p.txt"
 elif(sys.argv[1] == '2'):
-	inputfile = "./imdb/imdb_train_text_p1.txt"
-elif(sys.argv[1] == '3'):
 	inputfile = "./imdb/imdb_train_text_st_p1.txt"
+elif(sys.argv[1] == '3'):
+	inputfile = "./imdb/imdb_train_text_st_p2.txt"
+elif(sys.argv[1] == '4'):
+	inputfile = "./imdb/imdb_train_text_st_p3.txt"
+elif(sys.argv[1] == '5'):
+	inputfile = "./imdb/imdb_train_text_st_p4.txt"
 
 
 
@@ -119,10 +123,13 @@ if(sys.argv[1] == '0'):
 elif(sys.argv[1] == '1'):
 	learnedfile="learned_st_p.txt"
 elif(sys.argv[1] == '2'):
-	learnedfile = "learned_p1.txt"
-elif(sys.argv[1] == '3'):
 	learnedfile = "learned_st_p1.txt"
-
+elif(sys.argv[1] == '3'):
+	learnedfile = "learned_st_p2.txt"
+elif(sys.argv[1] == '4'):
+	learnedfile = "learned_st_p3.txt"
+elif(sys.argv[1] == '5'):
+	learnedfile = "learned_st_p4.txt"
 
 f=open(learnedfile,'w')
 

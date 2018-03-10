@@ -24,10 +24,14 @@ def getStemmedDocument(inputFileName, outputFileName):
 		print(documentWords, file=out)
 	out.close()
 
-old_file="./imdb/imdb_train_text.txt"
-new_file="./imdb/imdb_train_text_st.txt"
+old_file=sys.argv[1]
+new_file=sys.argv[2]
 getStemmedDocument(old_file, new_file)
 
-old_file = "./imdb/imdb_test_text.txt"
-new_file = "./imdb/imdb_test_text_st.txt"
-getStemmedDocument(old_file, new_file)
+# old_file="./imdb/imdb_train_text.txt"
+# new_file="./imdb/imdb_train_text_st.txt"
+# getStemmedDocument(old_file, new_file)
+
+# old_file = "./imdb/imdb_test_text.txt"
+# new_file = "./imdb/imdb_test_text_st.txt"
+# getStemmedDocument(old_file, new_file)

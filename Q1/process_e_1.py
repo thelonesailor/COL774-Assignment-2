@@ -37,9 +37,8 @@ def clean(inputfile, outputfile):
 				d[token] = 1
 
 		for token in d:
-			if(len(token)==1):
-				continue
-			sys.stdout.write(token+" "+str(d[token])+"\n")
+			if(d[token] > 1):
+				sys.stdout.write(token+" "+str(d[token])+"\n")
 
 		t += 1
 		sys.stdout.write("-1\n")
@@ -47,13 +46,13 @@ def clean(inputfile, outputfile):
 	sys.stdout.close()
 
 
-inputfile = "./imdb/imdb_train_text.txt"
-outputfile = "./imdb/imdb_train_text_p1.txt"
-clean(inputfile, outputfile)
+# inputfile = "./imdb/imdb_train_text.txt"
+# outputfile = "./imdb/imdb_train_text_p1.txt"
+# clean(inputfile, outputfile)
 
-inputfile = "./imdb/imdb_test_text.txt"
-outputfile = "./imdb/imdb_test_text_p1.txt"
-clean(inputfile, outputfile)
+# inputfile = "./imdb/imdb_test_text.txt"
+# outputfile = "./imdb/imdb_test_text_p1.txt"
+# clean(inputfile, outputfile)
 
 inputfile = "./imdb/imdb_train_text_st.txt"
 outputfile = "./imdb/imdb_train_text_st_p1.txt"

@@ -1,0 +1,3 @@
+A\subseteq\{1...m\} , |A|=k
+
+\min_{w,b}\frac{1}{2}w^{T}w+C\sum\limits_{i \in A}max(0,1-y^{(i)}(w^{T}x^{(i)}+b))
