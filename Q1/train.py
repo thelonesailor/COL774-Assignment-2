@@ -8,19 +8,19 @@ import sys
 # 2 for unstemmed
 # 3 for stemmed
 
-inputfile=""
-if(sys.argv[1] == '0'):
-	inputfile = "./imdb/imdb_train_text_p.txt"
-elif(sys.argv[1] == '1'):
-	inputfile = "./imdb/imdb_train_text_st_p.txt"
-elif(sys.argv[1] == '2'):
-	inputfile = "./imdb/imdb_train_text_st_p1.txt"
-elif(sys.argv[1] == '3'):
-	inputfile = "./imdb/imdb_train_text_st_p2.txt"
-elif(sys.argv[1] == '4'):
-	inputfile = "./imdb/imdb_train_text_st_p3.txt"
-elif(sys.argv[1] == '5'):
-	inputfile = "./imdb/imdb_train_text_st_p4.txt"
+inputfile=sys.argv[1]
+# if(sys.argv[1] == '0'):
+# 	inputfile = "./imdb/imdb_train_text_p.txt"
+# elif(sys.argv[1] == '1'):
+# 	inputfile = "./imdb/imdb_train_text_st_p.txt"
+# elif(sys.argv[1] == '2'):
+# 	inputfile = "./imdb/imdb_train_text_st_p1.txt"
+# elif(sys.argv[1] == '3'):
+# 	inputfile = "./imdb/imdb_train_text_st_p2.txt"
+# elif(sys.argv[1] == '4'):
+# 	inputfile = "./imdb/imdb_train_text_st_p3.txt"
+# elif(sys.argv[1] == '5'):
+# 	inputfile = "./imdb/imdb_train_text_st_p4.txt"
 
 
 
@@ -44,7 +44,7 @@ for a in data:
 
 m1=t-1
 
-csvfile = open("./imdb/imdb_train_labels.txt", 'r')
+csvfile = open(sys.argv[2], 'r')
 labels = list(csv.reader(csvfile))
 m2 = len(labels)
 
@@ -117,19 +117,19 @@ for word in vocabulary:
 print("training done")
 # training done
 
-learnedfile=""
-if(sys.argv[1] == '0'):
-	learnedfile = "learned_p.txt"
-elif(sys.argv[1] == '1'):
-	learnedfile="learned_st_p.txt"
-elif(sys.argv[1] == '2'):
-	learnedfile = "learned_st_p1.txt"
-elif(sys.argv[1] == '3'):
-	learnedfile = "learned_st_p2.txt"
-elif(sys.argv[1] == '4'):
-	learnedfile = "learned_st_p3.txt"
-elif(sys.argv[1] == '5'):
-	learnedfile = "learned_st_p4.txt"
+learnedfile=sys.argv[3]
+# if(sys.argv[1] == '0'):
+# 	learnedfile = "learned_p.txt"
+# elif(sys.argv[1] == '1'):
+# 	learnedfile="learned_st_p.txt"
+# elif(sys.argv[1] == '2'):
+# 	learnedfile = "learned_st_p1.txt"
+# elif(sys.argv[1] == '3'):
+# 	learnedfile = "learned_st_p2.txt"
+# elif(sys.argv[1] == '4'):
+# 	learnedfile = "learned_st_p3.txt"
+# elif(sys.argv[1] == '5'):
+# 	learnedfile = "learned_st_p4.txt"
 
 f=open(learnedfile,'w')
 

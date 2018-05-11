@@ -30,15 +30,33 @@ def clean(inputfile, outputfile):
 
 		tokens = tokenizer.tokenize(raw)
 		d = {}
-		for token in tokens:
+		l = len(tokens)
+		for i in range(0, l, 1):
+			# print(i)
+			if(i < l-1):
+				token = tokens[i]+tokens[i+1]
+			else:
+				break
+				token = tokens[i]
+
+			# print(token)
 			if(token in d):
 				d[token] += 1
 			else:
 				d[token] = 1
 
+		for i in range(0, l, 1):
+			token = tokens[i]
+
+			if(token in d):
+				d[token] += 1
+			else:
+				d[token] = 1
+
+
+
 		for token in d:
-			if(d[token] > 1):
-				sys.stdout.write(token+" "+str(d[token])+"\n")
+			sys.stdout.write(token+" "+str(d[token])+"\n")
 
 		t += 1
 		sys.stdout.write("-1\n")
@@ -46,18 +64,6 @@ def clean(inputfile, outputfile):
 	sys.stdout.close()
 
 
-# inputfile = "./imdb/imdb_train_text.txt"
-# outputfile = "./imdb/imdb_train_text_p1.txt"
-# clean(inputfile, outputfile)
-
-# inputfile = "./imdb/imdb_test_text.txt"
-# outputfile = "./imdb/imdb_test_text_p1.txt"
-# clean(inputfile, outputfile)
-
-inputfile = "./imdb/imdb_train_text_st.txt"
-outputfile = "./imdb/imdb_train_text_st_p1.txt"
-clean(inputfile, outputfile)
-
-inputfile = "./imdb/imdb_test_text_st.txt"
-outputfile = "./imdb/imdb_test_text_st_p1.txt"
+inputfile = sys.argv[1]
+outputfile = sys.argv[2]
 clean(inputfile, outputfile)

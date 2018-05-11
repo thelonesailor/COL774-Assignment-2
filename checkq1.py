@@ -10,22 +10,22 @@ if(sys.argv[1] =='1'):
 elif(sys.argv[1] == '2'):
 	print("Naive Bayes with stemming")
 elif(sys.argv[1] == '3'):
-	print("Naive Bayes with stemming and feature1")
+	print("Naive Bayes with stemming and bi grams")
 elif(sys.argv[1] == '4'):
-	print("Naive Bayes with stemming and feature2")
+	print("Naive Bayes with stemming and tri grams")
 elif(sys.argv[1] == '5'):
-	print("Naive Bayes with stemming and feature3")
-elif(sys.argv[1] == '6'):
-	print("Random prediction")
-elif(sys.argv[1] == '7'):
-	print("Most occuring in test data")
+	print("Naive Bayes with stemming and 4 gram")
+# elif(sys.argv[1] == '6'):
+# 	print("Random prediction")
+# elif(sys.argv[1] == '7'):
+# 	print("Most occuring in test data")
 
 
 csvfile = open(sys.argv[2], 'r')
-predictions = list(csv.reader(csvfile, delimiter=' '))
+predictions = list(csv.reader(csvfile))
 
 csvfile = open(sys.argv[3], 'r')
-labels = list(csv.reader(csvfile, delimiter=' '))
+labels = list(csv.reader(csvfile))
 
 assert len(predictions)==len(labels)
 
